@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+name = "pypi"
+verify_ssl = true
+
+[packages]
+django = "==2.0"
+textblob = "*"
+numpy = "*"
+pylint = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.5"
