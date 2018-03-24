@@ -1,8 +1,10 @@
-# from textblob import TextBlob, Word, Blobber
-from textblob.classifiers import NaiveBayesClassifier
-
+import numpy as np
+# from textblob import TextBlob
+# from textblob.classifiers import NaiveBayesClassifier
+from textblob.taggers import NLTKTagger
 # Training Data
 
+print ("Hello")
 train = [
      ('I love this sandwich.', 'Ham'),
      ('this is an amazing place!', 'Ham'),
@@ -26,3 +28,5 @@ print(res)
 res_percentage = cl.classify(text)
 print("\n")
 print(round(res_percentage("ham"),2) + "\n" + round(res_percentage("spam"),2))
+
+
