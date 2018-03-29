@@ -1,7 +1,8 @@
 #Spam Filter
 
-	This is a Web App which analyses the various messages or conversation You enter and classifies the conversation which you have entered is a **spam or Ham**(Not spam) using 
-the power of Machine Learning. This WebApp is build using django 2.0.
+	This is a Web App which analyses the various messages or conversation You enter and classifies the conversation 
+	
+which you have entered is a **spam or Ham**(Not spam) using the power of Machine Learning. This WebApp is build using django 2.0.
 
 
 **Technologies Involved**
