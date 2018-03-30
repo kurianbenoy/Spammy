@@ -17,14 +17,16 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, rand
 # Feature Scaling
 from sklearn.preprocessing import StandardScaler
 sc = StandardScaler()
-X_train = sc.fit_transform(X_train)
+X_train = sc.fit(X_train)
 X_test = sc.transform(X_test)
+print(X_train)
+print(X_test)
 
 # CountVectorizer method
 # from sklearn.feature_extraction.text import CountVectorizer
 # vect = CountVectorizer().fit(X_train.ravel())
 # print(len(vect.get_feature_names()[::20]))
 
-from sklearn.linear_model import LogisticRegression
-classifier = LogisticRegression(random_state = 0)
-classifier.fit(X_train,y_train)
+# from sklearn.linear_model import LogisticRegression
+# classifier = LogisticRegression(random_state = 0)
+# classifier.fit(X_train,y_train)
