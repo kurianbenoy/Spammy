@@ -1,4 +1,4 @@
-#Spam Filter
+## Spam Filter
 				
    This is a Web App which analyses the various messages or conversation You enter and classifies the conversation
 
