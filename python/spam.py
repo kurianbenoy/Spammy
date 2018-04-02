@@ -28,13 +28,13 @@ le = preprocessing.LabelEncoder()
 y_train = le.fit_transform(y_train)
 print(y_train)
 
-# # Fitting classifier to the Training set
-# from sklearn.naive_bayes import GaussianNB
-# classifier = GaussianNB()
-# classifier.fit(vectors,y_train)
+# Fitting classifier to the Training set
+from sklearn.naive_bayes import GaussianNB
+classifier = GaussianNB()
+classifier.fit(vectors,y_train)
 
-# # Predicting the Test set results
-# y_pred = classifier.predict(X_test)
+# Predicting the Test set results
+y_pred = classifier.predict(X_test)
 
 # # Making the Confusion Matrix
 # from sklearn.metrics import confusion_matrix
