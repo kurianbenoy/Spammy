@@ -13,4 +13,4 @@ class Classifer(models.Model):
             return "Training data"
 
     def __str__(self):
-        return self.name
+        return self.input
