@@ -1,47 +1,40 @@
 # Importing the libraries
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn import preprocessing
+from sklearn.naive_bayes import MultinomialNB
+from sklearn import cross_validation
+
+
+def feature_extractor(X,y):
+    vectorizer = TfidfVectorizer(max_features=50)
+    le = preprocessing.LabelEncoder()
+    transformed_data = vectorizer.fit_transform(X)
+    transformed_label = le.fit_transform(y)
+    return transformed_data, transformed_label
+
+
+
+def evaluate_models(X,Y):
+    '''
+    Model selection
+    '''
+    model = MultinomialNB()
+    model.fit(X,y)
+    y_pred = model.predict("I am  spam")
+    kfold = cross_validation.KFold(n=len(Y), n_folds=10, random_state=5)
+    cv_results = cross_validation.cross_val_score(model, X, Y, cv=kfold, scoring='accuracy')
+    print(y_pred)
+    print (cv_results.mean(), cv_results.std())
+
 
 # Importing the dataset
 dataset = pd.read_csv('spam_ham.csv')
-X = dataset.iloc[:, [0]].values
-y = dataset.iloc[:, 1].values
-# print(dataset.head())
-# print(X,y)
+X = dataset['text'].values
+y = dataset['type'].values
 
-# Splitting Dataset into train to test dataset
-from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
-
-# Converting text to vectors
-from sklearn.feature_extraction.text import TfidfVectorizer
-vectorizer = TfidfVectorizer()
-vectors = vectorizer.fit_transform(X_train.ravel())
-print(vectors)
-
-# print(X_train)
-
-#Label Encoding the dataset
-from sklearn import preprocessing
-le = preprocessing.LabelEncoder()
-y_train = le.fit_transform(y_train)
-print(y_train)
-
-# Fitting classifier to the Training set
-from sklearn.naive_bayes import GaussianNB
-classifier = GaussianNB()
-classifier.fit(vectors,y_train)
-
-# Predicting the Test set results
-y_pred = classifier.predict(X_test)
-
-# # Making the Confusion Matrix
-# from sklearn.metrics import confusion_matrix
-# cm = confusion_matrix(y_test, y_pred)
-
-# CountVectorizer method
-# from sklearn.feature_extraction.text import CountVectorizer
-# vect = CountVectorizer().fit(X_train.ravel())
-# print(len(vect.get_feature_names()[::20]))
+transformed_data , transformed_label = feature_extractor(X,y)
+evaluate_models(transformed_data , transformed_label)
 
