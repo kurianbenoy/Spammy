@@ -2,7 +2,6 @@ Django==2.0
 nltk==3.2.5
 numpy==1.14.2
 pandas==0.22.0
-pkg-resources==0.0.0
 python-dateutil==2.7.2
 pytz==2018.3
 six==1.11.0
