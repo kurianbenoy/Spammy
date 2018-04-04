@@ -1,6 +1,6 @@
 # Importing the libraries
 import numpy as np
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn import preprocessing
@@ -9,7 +9,7 @@ from sklearn import cross_validation
 
 
 def feature_extractor(X,y):
-    vectorizer = TfidfVectorizer(max_features=50)
+    vectorizer = TfidfVectorizer(max_features=50,ngram_range=(1,2))
     le = preprocessing.LabelEncoder()
     transformed_data = vectorizer.fit_transform(X)
     transformed_label = le.fit_transform(y)
@@ -22,11 +22,8 @@ def evaluate_models(X,Y):
     Model selection
     '''
     model = MultinomialNB()
-    model.fit(X,y)
-    y_pred = model.predict("I am  spam")
     kfold = cross_validation.KFold(n=len(Y), n_folds=10, random_state=5)
     cv_results = cross_validation.cross_val_score(model, X, Y, cv=kfold, scoring='accuracy')
-    print(y_pred)
     print (cv_results.mean(), cv_results.std())
 
 
@@ -36,5 +33,6 @@ X = dataset['text'].values
 y = dataset['type'].values
 
 transformed_data , transformed_label = feature_extractor(X,y)
-evaluate_models(transformed_data , transformed_label)
+# print(transformed_data[0])
+evaluate_models(transformed_data,transformed_label)
 
