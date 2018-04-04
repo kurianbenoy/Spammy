@@ -16,18 +16,24 @@
         <div class="nav-wrapper">
           <a href="#" class="brand-logo center">SPAM /HAM WebApp</a>
           <ul id="nav-mobile" class="left hide-on-med-and-down">
-            <li><a href="sass.html">Home</a></li>
-            <li><a href="badges.html">Components</a></li>
+            <li><a href="#">Home</a></li>
           </ul>
         </div>
       </nav>
 
-      <div class="centore">
-
           <div class="row">
+                  <form enctype="multipart/form-data"  class="col s5 " method="post" > 
+                  {% csrf_token %}
+
+                            <h2>Enter the Text</h2>
+                          <br>
+                        {{ form.inputtext }}
+                        <br>
+                        <br>
+                        <button type="submit" class ="save btn btn-default">Submit</button>
+                </form>
 
           </div>
-      </div
 
     </body>
 </html>
