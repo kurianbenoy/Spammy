@@ -1,9 +1,10 @@
-# from django import forms
-# from .models import Classifer
+from django.forms import ModelForm
+
+from .models import Classifer
 
 
-# class ClassifierForm(forms.ModelForm):
-#     class Meta:
-#         model = Classifer
-#         fields = [input]
+class ClassifierForm(ModelForm):
+    class Meta:
+        model = Classifer
+        fields = ['inputtext',]
         

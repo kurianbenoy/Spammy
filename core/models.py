@@ -3,7 +3,7 @@ import datetime
 
 # Create your models here.
 class Classifer(models.Model):
-    input = models.TextField()
+    inputtext = models.TextField()
     times = models.DateField()
 
     def date_status(self):
