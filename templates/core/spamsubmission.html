@@ -22,15 +22,29 @@
         </div>
       </nav>
 
-          <div class="row">
-                  <form   method="post" > 
+
+
+          <div class="row justify-content-center">
+                  <form  class="col s4 offset-s2" method="post" > 
                     {% csrf_token %}
                         <h2>Enter the Text</h2>
                           <br>
-                        {{ form.inputtext }}
+                        {% for hidden in form.hidden_fields %}
+                          {{ hidden }}
+                        {% endfor %}
+
+                        {% for field in form.visible_fields %}
+                          <div class="form-group">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field|add_class:'form-control' }}
+                            {% for error in field.errors %}
+                              <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                          </div>
+                        {% endfor %}
                         <br>
-                        <br>
-                        <button type="submit" class ="btn btn-success">Submit</button>
+
+                       <center><button type="submit" class ="btn btn-success">Submit</button></center>
                 </form>
 
           </div>
