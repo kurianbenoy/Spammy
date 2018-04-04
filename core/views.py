@@ -11,6 +11,9 @@ def Home(request):
 	if request.method == 'POST':
 		form = ClassifierForm(request.POST)
 		if form.is_valid():
+			timestamp = datetime.now()
+			print(timestamp)
+			form.times = timestamp
 			form.save()
 
 	else:
