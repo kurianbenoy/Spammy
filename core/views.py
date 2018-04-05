@@ -1,5 +1,6 @@
-import datetime
 # Importing the libraries
+
+import datetime
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -7,16 +8,18 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn import preprocessing
 from sklearn.naive_bayes import MultinomialNB
 from sklearn import cross_validation
-
 from django.shortcuts import render
 from django.views.generic import FormView
 
+# Create your views here.
 
 from .forms import ClassifierForm
 from .models import Classifer
 
+"""
+The following are function used for predicting whether the given message is Spam or Ham
 
-
+"""
 def feature_extractor(X,y):
     vectorizer = TfidfVectorizer(max_features=50,ngram_range=(1,2))
     le = preprocessing.LabelEncoder()
