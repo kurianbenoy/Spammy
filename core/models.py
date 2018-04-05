@@ -4,7 +4,7 @@ import datetime
 # Create your models here.
 class Classifer(models.Model):
     inputtext = models.TextField()
-    times = models.DateField()
+    times = models.DateTimeField(null=True)
 
     def __str__(self):
-        return self.input
+        return self.inputtext
