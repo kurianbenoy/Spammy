@@ -27,7 +27,7 @@ def feature_extractor(X,y):
         Using bag of words model using TfidfVectorizer and LabelEncoder to convert the dataset
     """
     mystop_words = set(stopwords.words('english'))
-    print(mystop_words)
+    # print(mystop_words)
     vectorizer = TfidfVectorizer(max_features=50,ngram_range=(1,2),stop_words=mystop_words)
     le = preprocessing.LabelEncoder()
     transformed_data = vectorizer.fit_transform(X)
