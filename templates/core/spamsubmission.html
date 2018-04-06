@@ -11,7 +11,7 @@
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
-    <body background="{% static 'images/maxresdefault.jpg' %}">
+    <body background="{% static 'images/spam-email_2.jpg' %}">
 
       <nav>
         <div class="nav-wrapper">
@@ -25,7 +25,7 @@
 
 
           <div class="row justify-content-center">
-                  <form  class="col s4 offset-s2" method="post" > 
+                  <form  class="col s4 offset-s3" method="post" > 
                     {% csrf_token %}
                         <h2>Enter the Text</h2>
                           <br>
@@ -33,6 +33,7 @@
                           {{ hidden }}
                         {% endfor %}
 
+                        <div class="col s7">
                           <div class="form-group">
                             <label for="{{ form.inputtext.id_for_label }}">{{ form.inputtext.label }}</label>
                             {{ form.inputtext|add_class:'form-control' }}
@@ -43,6 +44,8 @@
                         <br>
 
                        <center><button type="submit" class ="btn btn-success">Submit</button></center>
+                      </div>
+
                 </form>
 
           </div>
