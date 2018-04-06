@@ -13,7 +13,7 @@ def feature_extractor(X,y):
     le = preprocessing.LabelEncoder()
     transformed_data = vectorizer.fit_transform(X)
     transformed_label = le.fit_transform(y)
-    return transformed_data, transformed_label
+    return vectorizer,transformed_data, transformed_label
 
 
 
@@ -25,14 +25,20 @@ def evaluate_models(X,Y):
     kfold = cross_validation.KFold(n=len(Y), n_folds=10, random_state=5)
     cv_results = cross_validation.cross_val_score(model, X, Y, cv=kfold, scoring='accuracy')
     print (cv_results.mean(), cv_results.std())
-
+    return model
 
 # Importing the dataset
 dataset = pd.read_csv('spam_ham.csv')
 X = dataset['text'].values
 y = dataset['type'].values
 
-transformed_data , transformed_label = feature_extractor(X,y)
-# print(transformed_data[0])
-evaluate_models(transformed_data,transformed_label)
+vectorizer , transformed_data, transformed_label = feature_extractor(X,y)
+# print(transformed_label)
+# model = evaluate_models(transformed_data,transformed_label)
 
+clf = MultinomialNB(alpha=.01)
+clf.fit(transformed_data,transformed_label)
+test = ["As a valued customer, I am pleased to advise you that following recent review of your Mob No. you are awarded with a £1500 Bonus Prize, call 09066364589"]
+vectors_test = vectorizer.transform(test)
+pred = clf.predict(vectors_test)
+print (pred)
