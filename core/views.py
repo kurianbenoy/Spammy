@@ -8,6 +8,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn import preprocessing
 from sklearn.naive_bayes import MultinomialNB
 from sklearn import cross_validation
+from nltk.corpus import stopwords
+
+# Django imports
 from django.shortcuts import render
 from django.views.generic import FormView
 
@@ -20,7 +23,12 @@ The following are function used for predicting whether the given message is Spam
 
 """
 def feature_extractor(X,y):
-    vectorizer = TfidfVectorizer(max_features=50,ngram_range=(1,2))
+    """
+        Using bag of words model using TfidfVectorizer and LabelEncoder to convert the dataset
+    """
+    mystop_words = set(stopwords.words('english'))
+    print(mystop_words)
+    vectorizer = TfidfVectorizer(max_features=50,ngram_range=(1,2),stop_words=mystop_words)
     le = preprocessing.LabelEncoder()
     transformed_data = vectorizer.fit_transform(X)
     transformed_label = le.fit_transform(y)
@@ -54,26 +62,27 @@ vectors_test = vectorizer.transform(test)
 
 
 def Home(request):
-	form = ClassifierForm()
-	if request.method == 'POST':
-		form = ClassifierForm(request.POST)
-		if form.is_valid():
-			timestamp = datetime.datetime.now()
-			# print(timestamp)
-			predict = form.cleaned_data['inputtext']
-			predicton_text = [predict]
-			print(predict)
-			print(predicton_text)
-			vectors_predtest = vectorizer.transform(predicton_text)
-			forcast = clf.predict(vectors_predtest)
-			print(forcast)
-			author = form.save(commit=False)
-			author.times = timestamp
-			author.save()
-		else :
-			print(form.errors)
+    form = ClassifierForm()
+    if request.method == 'POST':
+        form = ClassifierForm(request.POST)
+        if form.is_valid():
+            timestamp = datetime.datetime.now()
+            # print(timestamp)
+            predict = form.cleaned_data['inputtext']
+            predicton_text = [predict]
+            vectors_predtest = vectorizer.transform(predicton_text)
+            forcast = clf.predict(vectors_predtest)
+            # result = list(map(int,forcast))
+            # print(result)
+            print(forcast)
+            author = form.save(commit=False)
+            author.times = timestamp
+            author.save()
+        else :
+            print(form.errors)
+        return render(request,'core/spamsubmission.html',{'form':form,'predict':forcast })    
 
-	else:
-		form = ClassifierForm()
 
-	return render(request,'core/spamsubmission.html',{'form':form })    
+    else:
+        form = ClassifierForm()
+    return render(request,'core/spamsubmission.html',{'form':form, })    
