@@ -7,15 +7,17 @@
         <title>Home</title>
         <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
-    <body background="{% static 'images/spam-email.jpg' %}">
+    <body background="{% static 'images/spam-email.jpg' %}" >
 
       <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper #607d8b blue-grey">
           <a href="#" class="brand-logo center">SPAM /HAM WebApp</a>
           <ul id="nav-mobile" class="left hide-on-med-and-down">
             <li><a href="#">Home</a></li>
@@ -24,19 +26,21 @@
       </nav>
 
 
-
-          <div class="row justify-content-center centralize">
+      <div class="#e0e0e0 grey lighten-2">
+          <div class="row justify-content-center centralize #006064 cyan darken-4 ">
                   <form method="post" > 
                     {% csrf_token %}
-                        <h2 class="text-center">Enter the Message</h2>
+          
                           <br>
+                        <i class="material-icons">report_problem</i>
+                         <center><h3> Enter Message </h3></center>
                         {% for hidden in form.hidden_fields %}
                           {{ hidden }}
                         {% endfor %}
 
                         <div>
                             <div class="form-group">
-                                <label for="{{ form.inputtext.id_for_label }}">{{ form.inputtext.label }}</label>
+                                
                                     {{ form.inputtext|add_class:'falign' }}
 
                                     {% for error in form.inputtext.errors %}
@@ -49,8 +53,10 @@
 
                 </form>
           </div>
+      </div>
+
+
            <div class="box">
-                    <!-- {{ predict }} -->
 
                     {% if predict == 0 %}
                       HAM
