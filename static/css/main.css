@@ -30,8 +30,9 @@ body{
 	width: 18%;
 	height: 10%;
 	font-size: 3em;
-	background-color: white;
+	background-color: yellow;
 	border: 5px solid green;
+	text-align: center;
 	box-shadow: 2px 2px 2px 2px black;
 
 }
