@@ -9,7 +9,7 @@ class ClassifierForm(ModelForm):
         model = Classifer
         fields = ['inputtext',]
         widget = {
-            'inputtext': Textarea(attrs={'cols': 20, 'rows': 100}),
+            'inputtext': Textarea(attrs={'cols': 1000, 'rows': 500}),
         }
     
 

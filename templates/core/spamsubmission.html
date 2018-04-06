@@ -27,7 +27,7 @@
           <div class="row justify-content-center">
                   <form  class="col s4 offset-s3" method="post" > 
                     {% csrf_token %}
-                        <h2>Enter the Text</h2>
+                        <h2>Enter the Message</h2>
                           <br>
                         {% for hidden in form.hidden_fields %}
                           {{ hidden }}
@@ -50,5 +50,17 @@
 
           </div>
 
+        <div class="row justify-content-center">
+            {{ predict }}
+
+            {% if predict == 0 %}
+              HAM
+            {% endif %}
+
+            {% if predict == 1 %}
+            SPAM
+            {% endif %}
+
+        </div>
     </body>
 </html>
