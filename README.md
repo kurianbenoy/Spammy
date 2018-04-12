@@ -1,9 +1,9 @@
 ## Spammy
-This is an intelligent Web app which analyses the various messages or conversation you enter and classifies the conversation
+This is an intelligent Web app which analyses the various messages or conversation you enter and classifies
 
-which you have entered is a spam or Ham(Not spam). It may seem simple at the beginning , but the project uses topics
+conversation which you have entered is a spam or Ham(Not spam). It may seem simple at the beginning , but 
 
-like Machine Learning ,Spam filter algorithms , Natural Language Processing  and Web Technologies .
+the project uses topics like Machine Learning ,Spam filter algorithms , Natural Language Processing  and Web Technologies .
 
 Every message you enter needs to be processed and converted to bag of Words model to be used in Machine Learning . 
 
