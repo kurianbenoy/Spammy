@@ -7,9 +7,9 @@ the project uses topics like Machine Learning ,Spam filter algorithms , Natural 
 
 Every message you enter needs to be processed and converted to bag of Words model to be used in Machine Learning . 
 
-I used the classification algorithms for Machine Learning the data and processed the conversation into a website using Django
+I used the classification algorithms for Machine Learning the data and processed the conversation into a website 
 
-2.0 as backend and used HTML, CSS and JavaScript extensively.
+using Django 2.0 as backend and used HTML, CSS and JavaScript extensively.
 
 
 **Technologies Involved**
