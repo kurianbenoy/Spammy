@@ -33,3 +33,12 @@ Natural Language processing
 3. Set up Mysql Database
 
 4. python3 manage.py migrate && python3 manage.py runserver
+
+
+
+**Working Samples**
+
+![alt text](https://github.com/kurianbenoy/Spammy/raw/master/Screenshot%20at%202018-04-06%2013-00-10.png)
+
+
+![alt text](https://github.com/kurianbenoy/Spammy/raw/master/Screenshot%20at%202018-04-06%2013-01-03.png)
