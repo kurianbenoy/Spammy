@@ -1,7 +1,9 @@
 from django.forms import ModelForm, Textarea
 
-from .models import Classifer
-
+try:
+	from .models import Classifer
+except:
+	from models import Classifier
 
 class ClassifierForm(ModelForm):	
 
